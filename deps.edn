@@ -801,12 +801,14 @@
                 "-p" "55555"]}
   ;; ---------------------------------------------------
 
+  ;; run an MCP server connected to a running nrepl on port 7888
+  ;; $ clojure -X:mcp :port 7888
   :mcp
   {:deps
    {org.slf4j/slf4j-nop {:mvn/version "2.0.16"} ;; Required for stdio server
     com.bhauman/clojure-mcp {:git/url "https://github.com/bhauman/clojure-mcp.git"
-                             :git/tag "v0.1.11-alpha"
-                             :git/sha "7739dba"}}
+                             :git/tag "v0.1.12"
+                             :git/sha "79b9d5a"}}
     :exec-fn clojure-mcp.main/start-mcp-server
     :exec-args {:port 7888}}
 
