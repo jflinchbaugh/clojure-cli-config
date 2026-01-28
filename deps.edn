@@ -232,6 +232,8 @@
   :project/create
   {:replace-deps {io.github.seancorfield/deps-new
                   {:git/tag "v0.12.2" :git/sha "465b303"}
+                  jflinchbaugh/project-templates
+                  {:local/root "/home/john/workspace/project-templates/"}
                   io.github.practicalli/project-templates
                   {:git/tag "2026-02-05" :git/sha "d414973"}}
    :exec-fn      org.corfield.new/create
