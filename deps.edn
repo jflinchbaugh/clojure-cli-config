@@ -55,8 +55,12 @@
   ;; Development environment aliases include the `dev` directory on the class path
   ;; https://practical.li/clojure/clojure-cli/repl-startup/
 
+  :dev
+  {:jvm-opts ["-Djdk.attach.allowAttachSelf"]}
+
   :dev/env
-  {:extra-paths ["dev"]}
+  {:extra-paths ["dev"]
+   :jvm-opts ["-Djdk.attach.allowAttachSelf"]}
 
   ;; Practicalli REPL Reloaded workflow
   ;; https://practical.li/clojure/clojure-cli/repl-reloaded/
@@ -811,6 +815,21 @@
                              :git/sha "79b9d5a"}}
     :exec-fn clojure-mcp.main/start-mcp-server
     :exec-args {:port 7888}}
+
+  ;; build a native image using graalvm.
+  ;; you must first switch to a graalvm with native-image binary available.
+  ;; clojure -M:native-image
+  :native-image
+  {:main-opts ["-m" "clj.native-image" "core"
+               "--initialize-at-build-time"
+               ;; optional native image name override
+               ;;"-H:Name=core"
+               ]
+              :jvm-opts ["-Dclojure.compiler.direct-linking=true"]
+              :extra-deps
+              {clj.native-image/clj.native-image
+               {:git/url "https://github.com/taylorwood/clj.native-image.git"
+                :sha "7708e7fd4572459c81f6a6b8e44c96f41cdd92d4"}}}
 
   ;; Format tool friendly way to highlight end of configuration sections
   :end/aliases {}}
