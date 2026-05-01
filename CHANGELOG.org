@@ -2,7 +2,7 @@
 
 * Unreleased
 
-* 2026-02-05
+* 2026-05-01
 ** Added
    - dev: ci workflow to create pr's for new library and action versions
    - dev: update github actions to latest versions
@@ -14,35 +14,41 @@
    | :name                                   | :current                                 | :latest                                  |
    |-----------------------------------      |------------------------------------------|------------------------------------------|
    | clojurians-zulip/feeds                  | 39c07aefe1903685d9d43492cda4ad2eb34cf51c | a7d1642b38732f79944862e14ff4786b9df9a25d |
-   | com.brunobonacci/mulog                  | 0.9.0                                    | 0.10.0                                   |
+   | cider/cider-nrepl                       | 0.58.0                                   | 0.59.0                                   |
+   | com.bhauman/rebel-readline              | 0.1.5                                    | 0.1.7                                    |
+   | com.brunobonacci/mulog                  | 0.9.0                                    | 0.10.1                                   |
    | com.github.flow-storm/clojure           | 1.12.3-1                                 | 1.12.4                                   |
    | com.github.flow-storm/flow-storm-dbg    | 4.5.8                                    | 4.5.9                                    |
    | com.github.seancorfield/next.jdbc       | 1.3.1070                                 | 1.3.1093                                 |
-   | dev.weavejester/cljfmt                  | 0.15.2                                   | 0.15.5                                   |
-   | djblue/portal                           | 0.61.0                                   | 0.62.2                                   |
+   | dev.weavejester/cljfmt                  | 0.15.2                                   | 0.16.4                                   |
+   | djblue/portal                           | 0.61.0                                   | 0.64.1                                   |
+   | integrant/repl                          | 0.5.0                                    | 0.5.1                                    |
    | io.github.nextjournal/clerk             | 0.18.1150                                | 0.18.1158                                |
    | io.github.practicalli/project-templates | 2025-09-04                               | 2026-02-05                               |
-   | io.github.seancorfield/deps-new         | v0.10.1                                  | v0.10.3                                  |
-   | nrepl/nrepl                             | 1.5.0                                    | 1.5.2                                    |
+   | io.github.seancorfield/deps-new         | v0.10.1                                  | v0.11.1                                  |
+   | lambdaisland/kaocha-cljs                | 1.8.163                                  | 1.9.181                                  |
+   | nrepl/nrepl                             | 1.5.0                                    | 1.7.0                                    |
    | org.clojure/spec-alpha2                 | eb94e46853d90153ba6dc72a4093719f38a90a4a | efbeb200b9594e265907c1d66ad4ffd9cd8c91cf |
    | org.clojure/test.check                  | 1.1.2                                    | 1.1.3                                    |
    | org.clojure/tools.deps.graph            | 1.1.90                                   | 1.2.98                                   |
    | org.clojure/tools.namespace             | 1.5.0                                    | 1.5.1                                    |
    | org.clojure/tools.trace                 | 0.8.0                                    | 0.9.0                                    |
+   | slipset/deps-deploy                     | 0.2.2                                    | 0.2.3                                    |
 
    - dev: updated GitHub action versions in all workflows
 
-   | :file                                          | :name                                | :current   | :latest    |
-   |------------------------------------------------|--------------------------------------|------------|------------|
-   | .github/workflows/changelog-check.yaml         | actions/checkout                     | v5         | v6         |
-   | .github/workflows/lint-review.yaml             | actions/checkout                     | v5         | v6         |
-   | .github/workflows/megalinter.yaml              | actions/checkout                     | v5         | v6         |
-   |                                                | actions/upload-artifact              | v4         | v5         |
-   | .github/workflows/quality-checks.yaml          | actions/checkout                     | v5         | v6         |
-   |                                                | DeLaGuardo/setup-clojure             | 13.4       | 13.5.2     |
-   |                                                | clj-kondo/clj-kondo                  | 2025.09.22 | 2026.01.19 |
-   | .github/workflows/scheduled-version-check.yaml | actions/checkout                     | v5         | v6         |
-   | .github/workflows/renovate.yaml                | renovatebot/github-action            | v44.0.5    | v46.0.1    |
+   | :file                                          | :name                     | :current   | :latest    |
+   |------------------------------------------------|---------------------------|------------|------------|
+   | .github/workflows/changelog-check.yaml         | actions/checkout          | v5         | v6         |
+   | .github/workflows/lint-review.yaml             | actions/checkout          | v5         | v6         |
+   | .github/workflows/megalinter.yaml              | actions/checkout          | v5         | v6         |
+   |                                                | actions/upload-artifact   | v4         | v5         |
+   | .github/workflows/quality-checks.yaml          | actions/checkout          | v5         | v6         |
+   |                                                | clj-kondo/clj-kondo       | 2026.01.19 | 2026.04.15 |
+   |                                                | DeLaGuardo/setup-clojure  | 13.4       | 13.5.2     |
+   |                                                | clj-kondo/clj-kondo       | 2025.09.22 | 2026.01.19 |
+   | .github/workflows/scheduled-version-check.yaml | actions/checkout          | v5         | v6         |
+   | .github/workflows/renovate.yaml                | renovatebot/github-action | v44.0.5    | v46.1.12   |
 
 
 * 2025-10-16
