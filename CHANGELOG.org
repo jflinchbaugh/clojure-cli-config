@@ -2,6 +2,9 @@
 
 * Unreleased
 
+** Updated
+   - dev: update github actions to latest versions `make dependencies-update`
+
 * 2026-05-01
 ** Added
    - dev: ci workflow to create pr's for new library and action versions
