@@ -4,6 +4,19 @@
 
 ** Updated
    - dev: update github actions to latest versions `make dependencies-update`
+   - aliases: update library versions using `make dependencies-update`
+
+   | :name                             | :current   | :latest    |
+   |-----------------------------------|------------|------------|
+   | com.github.flow-storm/clojure     | 1.12.4     | 1.12.5     |
+   | com.github.seancorfield/next.jdbc | 1.3.1093   | 1.3.1108   |
+   | djblue/portal                     | 0.64.1     | 0.65.0     |
+   | io.github.clj-holmes/clj-watson   | v6.0.1     | v6.1.0     |
+   | io.github.seancorfield/deps-new   | v0.11.1    | v0.12.2    |
+   | org.slf4j/slf4j-nop               | 2.0.17     | 2.0.18     |
+   | refactor-nrepl/refactor-nrepl     | 3.11.0     | 3.13.0     |
+   | slipset/deps-deploy               | 0.2.3      | 0.2.5      |
+
 
 * 2026-05-01
 ** Added
