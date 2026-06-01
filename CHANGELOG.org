@@ -2,6 +2,7 @@
 
 * Unreleased
 
+* 2026-06-02
 ** Updated
    - dev: update github actions to latest versions `make dependencies-update`
    - aliases: update library versions using `make dependencies-update`
