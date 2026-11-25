@@ -67,11 +67,11 @@
   ;; Use with editor command to start a REPL (Jack-in) to include REPL Reloaded tools
   :dev/reloaded
   {:extra-paths ["dev" "test"]
-   :extra-deps  {djblue/portal                {:mvn/version "0.67.0"}   ; portal data inspector
-                 clj-commons/clj-yaml         {:mvn/version "1.0.29"}   ; portal yaml support (optional)
+   :extra-deps  {djblue/portal                {:mvn/version "0.67.2"}   ; portal data inspector
+                 clj-commons/clj-yaml         {:mvn/version "1.0.30"}   ; portal yaml support (optional)
                  org.clojure/tools.namespace  {:mvn/version "1.5.1"}
-                 org.clojure/tools.trace      {:mvn/version "0.9.0"}
-                 org.slf4j/slf4j-nop          {:mvn/version "2.0.18"}
+                 org.clojure/tools.trace      {:mvn/version "0.9.1"}
+                 org.slf4j/slf4j-nop          {:mvn/version "2.0.20"}
                  com.brunobonacci/mulog       {:mvn/version "0.10.1"}
                  lambdaisland/kaocha          {:mvn/version "1.91.1392"}
                  org.clojure/test.check       {:mvn/version "1.1.3"}
@@ -80,7 +80,7 @@
   ;; ClojureScript tools during REPl startup
   :dev/reloaded-cljs
   {:extra-paths ["dev" "test"]
-   :extra-deps  {djblue/portal             {:mvn/version "0.67.0"}   ; portal data inspector
+   :extra-deps  {djblue/portal             {:mvn/version "0.67.2"}   ; portal data inspector
                  org.clojure/clojurescript {:mvn/version "1.10.844"}
                  lambdaisland/kaocha-cljs  {:mvn/version "1.9.181"}
                  org.clojure/test.check    {:mvn/version "1.1.3"}}}
@@ -114,7 +114,7 @@
   ;; Basic REPL UI with nREPL server for Clojure Editor support
   :repl/basic
   {:extra-deps {nrepl/nrepl       {:mvn/version "1.7.0"}
-                cider/cider-nrepl {:mvn/version "0.62.1"}}
+                cider/cider-nrepl {:mvn/version "0.62.2"}}
    :main-opts  ["--main" "nrepl.cmdline"
                 "--middleware" "[cider.nrepl/cider-middleware]"
                 "--interactive"]}
@@ -122,16 +122,47 @@
   ;; Headless REPL with nREPL server for Clojure Editor support
   :repl/headless
   {:extra-deps {nrepl/nrepl       {:mvn/version "1.7.0"}
-                cider/cider-nrepl {:mvn/version "0.62.1"}}
+                cider/cider-nrepl {:mvn/version "0.62.2"}}
    :main-opts  ["--main" "nrepl.cmdline"
                 "--middleware" "[cider.nrepl/cider-middleware]"]}
+
+  ;; Clojure-CLI REPL
+  ;; https://github.com/clojure/clojure-cli.repl is a new project to provide
+  ;; a rich command line REPL support, using Java Jline.
+  ;;
+  ;; Features:
+  ;; - multi-line editing
+  ;; - bracket highlighting
+  ;; - structural editing
+  ;; - inline eval
+  ;; - doc lookup for Clojure and Java
+  ;; - a data inspector
+  ;; - configurable prompts
+  ;; - custom keybindings
+  ;; - Vim or Emacs editing modes
+  ;;
+  ;; Aliases added:
+  ;;
+  ;; - `:repl/cli` start nREPL server and rich REPL client
+  ;; - `:repl/serve` start nREPL server only
+  ;; - `:repl/attach` start a client and attach to an existing nREPL server
+  ;;
+  ;; The nREPL server creates an `.nrepl.port` file containing the local port the nREPL server is listening too
+
+  :repl/cli   {:extra-deps {io.github.clojure/clojure-cli.repl-server {:mvn/version "0.1.0"}}
+               :main-opts ["-m" "clojure-cli.repl.server" "repl"]}
+  :repl/serve  {:extra-deps {io.github.clojure/clojure-cli.repl-server {:mvn/version "0.1.0"}}
+                :main-opts ["-m" "clojure-cli.repl.server"]}
+  :repl/attach {:replace-paths []
+                :replace-deps {io.github.clojure/clojure-cli.repl-client {:mvn/version "0.1.0"}}
+                :main-opts ["-m" "clojure-cli.repl.client"]}
 
   ;; Basic REPL UI, nREPL server and Portal data inspector
   :repl/inspect
   {:extra-deps
    {nrepl/nrepl       {:mvn/version "1.7.0"}
-    cider/cider-nrepl {:mvn/version "0.62.1"}
-    djblue/portal     {:mvn/version "0.67.0"}}
+    cider/cider-nrepl {:mvn/version "0.62.2"}
+    djblue/portal     {:mvn/version "0.67.2"}}
    :main-opts ["--main" "nrepl.cmdline"
                "--middleware"
                "[cider.nrepl/cider-middleware,portal.nrepl/wrap-portal]"]}
@@ -143,7 +174,7 @@
   :repl/clerk
   {:extra-deps {io.github.nextjournal/clerk   {:mvn/version "0.18.1158"}
                 nrepl/nrepl                   {:mvn/version "1.7.0"}
-                cider/cider-nrepl             {:mvn/version "0.62.1"}
+                cider/cider-nrepl             {:mvn/version "0.62.2"}
                 refactor-nrepl/refactor-nrepl {:mvn/version "3.14.0"}}
    :main-opts  ["--eval" "(require '[nextjournal.clerk])(nextjournal.clerk/show! 'nextjournal.clerk.tap)(nextjournal.clerk/serve! {:browse? true})"
                 "-m" "nrepl.cmdline"
@@ -162,7 +193,7 @@
   ;; clojure -M:repl/rebel
   :repl/rebel
   {:extra-deps {nrepl/nrepl                {:mvn/version "1.7.0"}
-                cider/cider-nrepl          {:mvn/version "0.62.1"}
+                cider/cider-nrepl          {:mvn/version "0.62.2"}
                 com.bhauman/rebel-readline {:mvn/version "0.1.11"}}
    :main-opts  ["--eval" "(apply require clojure.main/repl-requires)"
                 "--main" "nrepl.cmdline"
@@ -178,13 +209,13 @@
   :repl/reloaded
   {:extra-paths ["dev" "test"]
    :extra-deps {nrepl/nrepl                  {:mvn/version "1.7.0"}
-                cider/cider-nrepl            {:mvn/version "0.62.1"}
+                cider/cider-nrepl            {:mvn/version "0.62.2"}
                 com.bhauman/rebel-readline   {:mvn/version "0.1.11"}
-                djblue/portal                {:mvn/version "0.67.0"}   ; portal data inspector
-                clj-commons/clj-yaml         {:mvn/version "1.0.29"}   ; portal yaml support (optional)
+                djblue/portal                {:mvn/version "0.67.2"}   ; portal data inspector
+                clj-commons/clj-yaml         {:mvn/version "1.0.30"}   ; portal yaml support (optional)
                 org.clojure/tools.namespace  {:mvn/version "1.5.1"}
-                org.clojure/tools.trace      {:mvn/version "0.9.0"}
-                org.slf4j/slf4j-nop          {:mvn/version "2.0.18"}
+                org.clojure/tools.trace      {:mvn/version "0.9.1"}
+                org.slf4j/slf4j-nop          {:mvn/version "2.0.20"}
                 com.brunobonacci/mulog       {:mvn/version "0.10.1"}
                 lambdaisland/kaocha          {:mvn/version "1.91.1392"}
                 org.clojure/test.check       {:mvn/version "1.1.3"}
@@ -231,7 +262,7 @@
   ;; clojure -T:project/create :template template/name :name project/name
   :project/create
   {:replace-deps {io.github.seancorfield/deps-new
-                  {:git/tag "v0.12.2" :git/sha "465b303"}
+                  {:git/tag "v0.14.1" :git/sha "39d257c"}
                   jflinchbaugh/project-templates
                   {:local/root "/home/john/workspace/project-templates/"}
                   io.github.practicalli/project-templates
@@ -243,7 +274,7 @@
   ;; Local testing of Practicalli Project Templates
   :project/create-local
   {:replace-deps {io.github.seancorfield/deps-new
-                  {:git/tag "v0.12.2" :git/sha "465b303"}
+                  {:git/tag "v0.14.1" :git/sha "39d257c"}
                   practicalli/project-templates
                   {:local/root "/home/practicalli/projects/practicalli/code/project-templates/"}}
    :exec-fn      org.corfield.new/create
@@ -303,7 +334,7 @@
   :search/outdated
   {:replace-paths ["."]
    :replace-deps  {com.github.liquidz/antq {:mvn/version "2.11.1276"}
-                   org.slf4j/slf4j-nop     {:mvn/version "2.0.18"}}
+                   org.slf4j/slf4j-nop     {:mvn/version "2.0.20"}}
    :exec-fn antq.tool/outdated
    :exec-args {:directory ["."] ; default
                :exclude ["org.clojure/tools.deps.alpha"
@@ -321,7 +352,7 @@
   :update/dependency-versions
   {:replace-paths ["."]
    :replace-deps  {com.github.liquidz/antq {:mvn/version "2.11.1276"}
-                   org.slf4j/slf4j-nop     {:mvn/version "2.0.18"}}
+                   org.slf4j/slf4j-nop     {:mvn/version "2.0.20"}}
    :exec-fn antq.tool/outdated
    :exec-args {:directory ["."] ; default
                :exclude ["org.clojure/tools.deps.alpha"
@@ -365,6 +396,13 @@
    {io.github.clj-holmes/clj-watson {:git/tag "v6.1.0" :git/sha "be98e4d"}}
    :main-opts ["-m" "clj-watson.cli" "scan" "-s" "-p" "deps.edn"]}
   ;; ---------------------------------------------------
+
+  ;; 'AI' tools
+  ;;
+  :ai/clojure-mcp
+  {:replace-deps {io.github.bhauman/clojure-mcp
+                  {:git/tag "v0.5.1" :git/sha "c9cdd6b"}}
+   :exec-fn clojure-mcp.main/start}
 
   ;; ---------------------------------------------------
   ;; Project Deployment
@@ -487,11 +525,11 @@
   ;; cljfmt
   ;; clojure -M:format/cljfmt
   :format/cljfmt
-  {:extra-deps {dev.weavejester/cljfmt {:mvn/version "0.16.5"}}
+  {:extra-deps {dev.weavejester/cljfmt {:mvn/version "0.16.6"}}
    :main-opts ["--main" "cljfmt.main" "check"]}
 
   :format/cljfmt!
-  {:extra-deps {dev.weavejester/cljfmt {:mvn/version "0.16.5"}}
+  {:extra-deps {dev.weavejester/cljfmt {:mvn/version "0.16.6"}}
    :main-opts ["--main" "cljfmt.main" "fix"]}
   ;; ---------------------------------------------------
 
@@ -504,7 +542,7 @@
   ;; H2 embedded database
   :database/h2
   {:extra-deps
-   {com.h2database/h2                 {:mvn/version "2.4.240"}
+   {com.h2database/h2                 {:mvn/version "2.5.252"}
     com.github.seancorfield/next.jdbc {:mvn/version "1.3.1118"}}}
   ;; ---------------------------------------------------
 
@@ -526,15 +564,15 @@
   ;; https://github.com/djblue/portal
 
   :inspect/portal-cli
-  {:extra-deps {djblue/portal {:mvn/version "0.67.0"}}}
+  {:extra-deps {djblue/portal {:mvn/version "0.67.2"}}}
 
   :inspect/portal-web
-  {:extra-deps {djblue/portal             {:mvn/version "0.67.0"}
+  {:extra-deps {djblue/portal             {:mvn/version "0.67.2"}
                 org.clojure/clojurescript {:mvn/version "1.11.60"}}
    :main-opts  ["--main" "cljs.main"]}
 
   :inspect/portal-node
-  {:extra-deps {djblue/portal             {:mvn/version "0.67.0"}
+  {:extra-deps {djblue/portal             {:mvn/version "0.67.2"}
                 org.clojure/clojurescript {:mvn/version "1.11.60"}}
    :main-opts  ["--main" "cljs.main" "-re" "node"]}
 
@@ -550,7 +588,7 @@
   ;; Flowstorm, a tracing debugger
   ;; https://github.com/jpmonettas/flow-storm-debugger
   :lib/flowstorm
-  {:extra-deps {com.github.flow-storm/flow-storm-dbg {:mvn/version "4.6.0"}}}
+  {:extra-deps {com.github.flow-storm/flow-storm-dbg {:mvn/version "4.8.1"}}}
 
   ;; Suggested FlowStorm approach.
   ;; Use patched Clojure compiler which instruments all evaluations
@@ -558,7 +596,7 @@
   :lib/clojurestorm
   {:classpath-overrides {org.clojure/clojure nil}
    :extra-deps {com.github.flow-storm/clojure {:mvn/version "1.12.5-1"}
-                com.github.flow-storm/flow-storm-dbg {:mvn/version "4.6.0"}}
+                com.github.flow-storm/flow-storm-dbg {:mvn/version "4.8.1"}}
    ;; Optionally add jvm-opt to manage instrumentation:
    ;; -Dclojure.storm.instrumentOnlyPrefixes=YOUR_INSTRUMENTATION_STRING"
    :jvm-opts ["-Dclojure.storm.instrumentEnable=true"]}

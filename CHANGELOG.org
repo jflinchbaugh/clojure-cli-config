@@ -2,6 +2,67 @@
 
 * Unreleased
 
+* 2026-09-28
+** Added
+   - build(make): 🔧 add docs to phony to stop check on directory
+   - build(zensical): 💄 clojure icon for site and repo in theme
+   - build(zensical): 💄 add icon to each page
+   - build(zensical): 💄 disable navigation tabs to show pages in left nav
+
+** Updated
+   - ci(github): 🔧 update DeLaGuardo/setup-clojure to 13.7.0
+   - chore(aliases): ⬆️ update library versions using `make dependencies-update`
+
+   | :name                           | :current | :latest |
+   |---------------------------------|----------|---------|
+   | clj-commons/clj-yaml            | 1.0.29   | 1.0.30  |
+   | com.h2database/h2               | 2.5.250  | 2.5.252 |
+   | dev.weavejester/cljfmt          | 0.16.5   | 0.16.6  |
+   | io.github.seancorfield/deps-new | v0.13.0  | v0.14.1 |
+   | org.clojure/tools.trace         | 0.9.0    | 0.9.1   |
+   | org.slf4j/slf4j-nop             | 2.0.19   | 2.0.20  |
+
+
+* 2026-09-06
+** Updated
+
+   - ci(github): 🔧 update git ignore and attributes config
+   - docs(aliases): ✏️ add from readme and reorganise into sections
+   - build(docs): 🔧 create basic zensical docs config
+   - ci(github): 🔧 update megalinter workflow and configs to latest Practicalli setup
+   - ci(github): 🔧 use practicalli custom megalinter flavor for clojure
+   - ci(github): 🔧 use current major version of renovate action
+   - chore(aliases): update library versions using `make dependencies-update`
+
+   | :file                                 | :name               | :current   | :latest    |
+   |---------------------------------------|---------------------|------------|------------|
+   | .github/workflows/quality-checks.yaml | clj-kondo/clj-kondo | 2026.08.03 | 2026.08.04 |
+
+   - chore(dependency): 🔧 monthly library dependency update
+
+   | com.github.flow-storm/flow-storm-dbg | 4.7.0    | 4.8.1   |
+   | com.h2database/h2                    | 2.4.240  | 2.5.250 |
+   | djblue/portal                        | 0.67.1   | 0.67.2  |
+   | org.slf4j/slf4j-nop                  | 2.0.18   | 2.0.19  |
+
+* 2026-08-03
+** Updated
+   - ci(workflows): monthly update to latest action versions
+   - chore(aliases): update library versions using `make dependencies-update`
+
+   | :name                                  | :current   | :latest    |
+   |----------------------------------------|------------|------------|
+   | cider/cider-nrepl                      | 0.59.0     | 0.62.2     |
+   | com.bhauman/rebel-readline             | 0.1.7      | 0.1.11     |
+   | com.clojure-goes-fast/clj-memory-meter | 0.4.0      | 0.5.0      |
+   | com.github.flow-storm/clojure          | 1.12.5     | 1.12.5-1   |
+   | com.github.flow-storm/flow-storm-dbg   | 4.5.9      | 4.7.0      |
+   | com.github.seancorfield/next.jdbc      | 1.3.1108   | 1.3.1118   |
+   | dev.weavejester/cljfmt                 | 0.16.4     | 0.16.5     |
+   | djblue/portal                          | 0.65.0     | 0.67.1     |
+   | io.github.seancorfield/deps-new        | v0.12.2    | v0.13.0    |
+   | refactor-nrepl/refactor-nrepl          | 3.13.0     | 3.14.0     |
+
 * 2026-06-02
 ** Updated
    - dev: update github actions to latest versions `make dependencies-update`
